@@ -1,0 +1,12 @@
+Installation of React:
+
+create-react-app : Recommended tool for creating react projects which is published by Facebook
+
+1. npm install -g create-react-app  ( -g is used to install globally)
+2. create-react-app <name-of-the-project> --scripts-version 1.1.5
+* --scripts-version 1.1.5 : It just impacts the structure of the project but doesnot change the react scripts
+3.Once installed, you will find a bunch of commands
+npm start: starts the development server
+npm build: Builds the app in to static files for production
+npm test: Starts the test runner
+npm eject: Removes this tool and copies build dependencies, configuration files and scripts into the app directory. If you do this, you cant go back.
