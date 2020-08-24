@@ -1,0 +1,10 @@
+1.In App.js
+we render react file using the syntax:
+render () {
+		return ( <html code> )
+		}
+		
+2.We can create html elememts using the createElement function
+React.createElement('div', null, <text>)
+example:
+React.createElement('div', null, React.createElement('h1', { className: 'App'}, 'This is my first react App!!'))
