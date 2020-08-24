@@ -1,0 +1,26 @@
+                    React-Redux
+					
+React:
+* It is a JS library for building user interfaces
+* It inclues the custom HTML elements
+
+Why React?
+* UI state becomes difficult to handle with vanilla JS
+* The core objective of React is providing the best possible rendering performance. Its strength comes from the focus on individual components.
+* It focuses on business logic, not on preventing your app from exploding.
+* It uses Virtual DOM that makes the app fast.
+* Huge Ecosystem, Active Community and High performance.
+
+Two kinds of Applications:
+1. Single-Page Applications
+2. Multi-Page Applications
+
+Single-Page Applications:
+*Only one HTML page, is rendered on Client.
+*It includes multiple components where each component is a react component and all these are maintained under a parent react component.
+*One call for the page to render( ReactDOM.render())
+
+Multi-Page Applications:
+*Multiple HTML pages, Content is rendered on server.
+*It includes individual widgets and that will be dumped in the multi-page.
+*Multiple calls for widget
