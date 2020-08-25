@@ -1,1 +1,18 @@
 Summary of Lists:
+
+Renderling list and Conditional content:
+* Creating truly dynamic apps.
+* We cannot add the if statement logic within the return statement.
+* {<condition> ? <div> </div> :null}
+* React will render the DOM only if the condition is true.
+* Everything within the render() method gets whenever react rerenders the component.
+* Looping an array, we can use of map()
+	{this.state.persons.map ((person,index)=>{})}
+* Always update the state in an immutable fashion using [...] spread operator.
+
+List Keys:
+* Key property:We need add key property while rendering lists.
+* Key property helps react update the lit efficiently.
+
+Flexible list:
+* Lists that help to render data with ease.

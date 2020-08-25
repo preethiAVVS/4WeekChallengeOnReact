@@ -8,3 +8,52 @@ render () {
 React.createElement('div', null, <text>)
 example:
 React.createElement('div', null, React.createElement('h1', { className: 'App'}, 'This is my first react App!!'))
+
+JSX Restrictions:
+* Some words cannot be used like class.
+* All the elemnets like div etc are provided by react library and they are not the html tags.
+* JSX expressions must have one root elemnet.
+	Eg: within one div element.
+
+Creating a functional componenet:
+* Much maintainable and clear to understand.
+* Uses the ES6 functions.
+	count person=( ) -> { }.
+* Dynamic content:we used to wrap data in single curly braces.
+* State is managed from inside a component.
+* Available in components.
+* In react-hooks,we can use usestate in functionl components.
+
+Handling events-On click={this.funname}
+
+Setstate-Update the state and react gets to know to update the DOM.
+	this.setstate({ })
+
+*In react-hooks 16.8,we can manage state in functional components.
+
+Usestate:
+*Manage state in functional components.
+*It returns an array with exactly two elements.
+	const[persons, setpersons]=usestate({ });
+		|	   |
+	   create state  set the state
+
+*Setpersons(2nd element) in the above example does not merge the data with the old state instead it replaces the old state.
+
+*Hooks: A way to use state and other react features without use a class.
+
+*Stateful components:Manages the state(also called as smart or container components)
+
+*Stateless components:No internal state(also called as presentational components).
+
+Passing Parameters:
+1.this.<fun_name> .bind(this ,'name')
+2.() => this.<fun_name>('name')
+
+Two way binding:
+*Allows data to bind with the props property.
+*Styling components.
+
+* We need to import CSS to Js files.
+* Style tags are directly imported by webpack.
+* We can use css files or inline styles for adding the styling properties.
