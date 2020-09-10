@@ -3,6 +3,7 @@ import './App.css';
 import styled from 'styled-components';
 // import Radium, {StyleRoot} from 'radium';
 import Person from './Person/Person';
+import ErrorBoundary from './ErrorBoundary/ErroBoundary';
 
 import cssclass from './App.css';
 
@@ -93,11 +94,11 @@ class App extends Component {
     if (this.state.showPersons) {
       persons = (<div>
         {this.state.persons.map((person, index) => {
-          return <Person name={person.name} click={() => this.deletepersonHandler(index)
+          return <ErrorBoundary key={person.Id}><Person name={person.name} click={() => this.deletepersonHandler(index)
           }
             age={person.age}
             change={(event) => this.nameChangeHandler(event, person.Id)}
-            key={person.Id}></Person>
+            ></Person></ErrorBoundary>
         })}
       </div>)
 
