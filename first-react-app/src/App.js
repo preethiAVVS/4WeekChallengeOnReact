@@ -4,6 +4,8 @@ import styled from 'styled-components';
 // import Radium, {StyleRoot} from 'radium';
 import Person from './Person/Person';
 
+import cssclass from './App.css';
+
 const StyledButton = styled.button`
       background-color: ${props => props.alt ? 'red': 'green'};
       color: white;
@@ -87,6 +89,7 @@ class App extends Component {
     }
 
     let persons = null;
+    let btnClass = [cssclass.Button];
     if (this.state.showPersons) {
       persons = (<div>
         {this.state.persons.map((person, index) => {
@@ -98,6 +101,7 @@ class App extends Component {
         })}
       </div>)
 
+      btnClass.push(cssclass.Red);
 
       // persons = (<div>
       //   <Person name={this.state.persons[0].name} age={this.state.persons[0].age}/>
@@ -119,22 +123,23 @@ class App extends Component {
 
     const classes = [];
     if (this.state.persons.length <= 2) {
-      classes.push('red');
+      classes.push(cssclass.red);
     }
 
     if (this.state.persons.length <= 1) {
-      classes.push('bold');
+      classes.push(cssclass.bold);
     }
 
     return (
       // <StyleRoot>
-      <div className="App">
+      <div className={cssclass.App}>
         <h1>This is my first react App!!</h1>
         <p className={classes.join(' ')}> It's working!!</p>
+        <button className={btnClass.join(' ')} onClick={this.toggleHandler}>Switch Name</button>
 
         {/* <button style={style} onClick={this.toggleHandler}>Switch Name</button> */}
 
-        <StyledButton alt={this.state.showPersons} onClick={this.toggleHandler}> Switch Name </StyledButton>
+        {/* <StyledButton alt={this.state.showPersons} onClick={this.toggleHandler}> Switch Name </StyledButton> */}
 
 
         {persons /* { this.state.showPersons ?  <div>
