@@ -4,7 +4,7 @@ import Auxiliary from "../../../hoc/Auxiliary/Auxiliary";
 import Backdrop from "../Backdrop/Backdrop";
 class Modal extends Component {
     shouldComponentUpdate(nextProps, nextState) { // to render the modal data only whem popup is shown
-        return nextProps.show !== this.props.show;
+        return nextProps.show !== this.props.show || nextProps.children !== this.props.children;
     }    
     render() {
         return (
