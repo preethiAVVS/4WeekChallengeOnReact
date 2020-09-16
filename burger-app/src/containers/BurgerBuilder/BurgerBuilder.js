@@ -49,29 +49,39 @@ class BurgerBuilder extends Component {
         this.setState({ purchasing: false });
     }
     purchasecontinueHandler = () => {
-        this.setState({ loading: true });
-        const post = {
-            ingredients: this.state.ingredients,
-            price: this.state.totalPrice,
-            customer: {
-                name: "PREETHI",
-                address: {
-                    street: "Chinna market",
-                    zipcode: "533002",
-                    country: "india"
-                },
-                email: "test@test.com"
-            },
-            deliverymethod: "fastest"
+        // this.setState({ loading: true });
+        // const post = {
+        //     ingredients: this.state.ingredients,
+        //     price: this.state.totalPrice,
+        //     customer: {
+        //         name: "PREETHI",
+        //         address: {
+        //             street: "Chinna market",
+        //             zipcode: "533002",
+        //             country: "india"
+        //         },
+        //         email: "test@test.com"
+        //     },
+        //     deliverymethod: "fastest"
+        // }
+        // axios.post("/orders.json", post).then(response => {
+        //     this.setState({
+        //         loading: false,
+        //         purchasing: false
+        //     });
+        // }).catch(error => {
+        //     this.setState({ loading: false, purchasing: false });
+        // });
+        const queryparams = [];
+        for (let i in this.state.ingredients) {
+            queryparams.push(encodeURIComponent(i) + "=" + encodeURIComponent(this.state.ingredients[i]));
         }
-        axios.post("/orders.json", post).then(response => {
-            this.setState({
-                loading: false,
-                purchasing: false
-            });
-        }).catch(error => {
-            this.setState({ loading: false, purchasing: false });
-        });
+        const queryString = queryparams.join("&");
+       // this.props.history.push("/checkout");
+       this.props.history.push({
+           pathname: "/checkout",
+           search: "?" + queryString
+       });
     }
 
 
