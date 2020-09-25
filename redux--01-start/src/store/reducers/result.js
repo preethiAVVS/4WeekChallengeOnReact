@@ -1,6 +1,11 @@
-import * as actionTypes from "../actions";
+import * as actionTypes from "../actions/actions";
+import {updatedObject} from "../utility";
 const initialState = {
     results: []
+}
+const deleteHandler = (state, action) => {
+        const updatedState = state.results.filter(each => each.id !== action.value);
+        return updatedObject(state, { results: updatedState});
 }
 
 //Reducer
@@ -8,16 +13,19 @@ const reducer = (state = initialState, action) => {
 
     switch(action.type) {
         case actionTypes.STORE:
-            return{
-                ...state,
-                results: state.results.concat({ id: new Date(), value: action.value})
-            }
+            return updatedObject(state, { results: state.results.concat({ id: new Date(), value: action.value})});
+            // return{
+            //     ...state,
+            //     results: state.results.concat({ id: new Date(), value: action.value})
+            // }
         case actionTypes.DEL:
-            const updatedState = state.results.filter(each => each.id !== action.value);
-            return{
-                ...state,
-                results: updatedState
-            }
+            return deleteHandler(state, action);
+            // const updatedState = state.results.filter(each => each.id !== action.value);
+            // return updatedObject(state, { results: updatedState});
+            // return{
+            //     ...state,
+            //     results: updatedState
+            // }
     }
     
     return state;
