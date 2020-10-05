@@ -4,6 +4,8 @@ import Button from "../../../components/UI/Button/Button";
 import axios from "../../../axios-orders";
 import Spinner from "../../../components/UI/Spinner/Spinner";
 import Input from "../../../components/UI/Input/Input";
+import withErrorHandler from '../../../hoc/withErrorHandler/withErrorHandler';
+import * as actions from '../../../store/actions/index';
 import {connect} from "react-redux";
 class ContactData extends Component {
     state =  {
@@ -110,25 +112,36 @@ class ContactData extends Component {
     }
     orderHandler = (event) => {
         event.preventDefault();
-        this.setState({ loading: true });
-        const orderForm = {};
-        for(let key in this.state.orderForm) {
-            orderForm[key] = this.state.orderForm[key].value;
+        // this.setState({ loading: true });
+        // const orderForm = {};
+        // for(let key in this.state.orderForm) {
+        //     orderForm[key] = this.state.orderForm[key].value;
+        // }
+        // const post = {
+        //     ingredients: this.props.ings,
+        //     price: this.props.price,
+        //     orderData: orderForm
+        // }
+        // axios.post("/orders.json", post).then(response => {
+        //     this.setState({
+        //         loading: false
+        //     });
+        //     this.props.history.push("/");
+        // }).catch(error => {
+        //     this.setState({ loading: false });
+        // });
+        const formData = {};
+        for (let formElementIdentifier in this.state.orderForm) {
+            formData[formElementIdentifier] = this.state.orderForm[formElementIdentifier].value;
         }
-        const post = {
+        const order = {
             ingredients: this.props.ings,
             price: this.props.price,
-            orderData: orderForm
+            orderData: formData,
+            userId: this.props.userId
         }
-        axios.post("/orders.json", post).then(response => {
-            this.setState({
-                loading: false
-            });
-            this.props.history.push("/");
-        }).catch(error => {
-            this.setState({ loading: false });
-        });
 
+        this.props.onOrderBurger(this.props.token,order, this.props.userId);
     }
 
     inputChangeHandler = (event, formid) => {
@@ -182,11 +195,20 @@ class ContactData extends Component {
     }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
     return {
-        ings: state.ingredients,
-        price: state.totalPrice
+        ings: state.burgerBuilder.ingredients,
+        price: state.burgerBuilder.totalPrice,
+        loading: state.order.loading,
+        token: state.auth.token,
+        userId: state.auth.userId
     }
-}
+};
 
-export default connect(mapStateToProps)(ContactData);
+const mapDispatchToProps = dispatch => {
+    return {
+        onOrderBurger: (token, orderData, userId) => dispatch(actions.purchaseBurger(token, orderData))
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(withErrorHandler(ContactData, axios));

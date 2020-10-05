@@ -7,7 +7,7 @@ const Toolbar = (props) => (
     <header className={classes.Toolbar}>
         <DrawerToogle clicked={props.drawerClicked}></DrawerToogle>
         <div className={classes.Logo}><Logo/></div>
-        <div className={classes.DesktopOnly}><NavigationItems></NavigationItems></div>
+        <div className={classes.DesktopOnly}><NavigationItems isAuth={props.isAuth}></NavigationItems></div>
         
     </header>
 )

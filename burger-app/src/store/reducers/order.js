@@ -8,6 +8,7 @@ const initialState = {
 };
 
 const purchaseInit = ( state, action ) => {
+    console.log(state);
     return updateObject( state, { purchased: false } );
 };
 
