@@ -16,7 +16,7 @@ import * as actions from "../../store/actions/index";
 //     cheese: 0.4,
 //     bacon: 0.9
 // }
-class BurgerBuilder extends Component {
+export class BurgerBuilder extends Component {
     state = {
     //    ingredients: null,
     //    totalPrice: 4,
@@ -32,7 +32,6 @@ class BurgerBuilder extends Component {
         // }).catch(error => {
         //     this.setState({error: true});
         // })
-        console.log(this.props); 
         this.props.onInitIngredients();
     }
 
@@ -71,7 +70,6 @@ class BurgerBuilder extends Component {
     //        pathname: "/checkout",
     //        search: "?" + queryString
     //    });
-    console.log(this.props.ings);
         this.props.onInitPurchase();
         this.props.history.push("/checkout");
     }
